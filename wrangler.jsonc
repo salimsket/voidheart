@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "cloudflare-svelte-app",
+	"name": "voidheart",
 	"compatibility_date": "2025-10-24",
 	"compatibility_flags": [
 		"nodejs_als"
