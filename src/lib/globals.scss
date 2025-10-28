@@ -1,0 +1,117 @@
+@use 'reset-css';
+
+:root {
+  --font-family:
+    "mac's Minecraft Extended", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-size: 16px;
+  --color-foreground: #e0e0e0;
+  --color-background: #0a041b;
+  --color-background-red: #0d0000;
+  --color-black: #000000;
+  --color-gray: #aaaaaa;
+  --color-dark-gray: #555555;
+  --color-link: #7575ff;
+  --color-link-hover: #9494ff;
+  --color-link-glow: hsla(240, 100%, 73%, 0.24);
+  --color-red: #ff5555;
+  --color-dark-red: #aa0000;
+  --color-dark-red-glow: hsla(0, 100%, 33%, 0.64);
+  --color-yellow: #ffff55;
+  --color-gold: #ffaa00;
+  --color-blue: #5555ff;
+  --color-blue-grad: #9355ff;
+  --color-green: #55ff55;
+  --color-discord: #5865f2;
+  --transition-fast: 120ms ease;
+  --transition-medium: 240ms ease;
+  --transition-slow: 480ms ease;
+}
+
+::selection {
+  color: var(--color-black);
+  background-color: var(--color-yellow);
+}
+* {
+  box-sizing: border-box;
+}
+
+@keyframes copyPulse {
+  0% {
+    box-shadow: 0 0 6rem 0 var(--color-dark-red-glow) inset;
+  }
+}
+@keyframes copyGray {
+  0% {
+    filter: grayscale(1);
+    background-color: var(--color-background-red);
+  }
+  35% {
+    filter: grayscale(1);
+  }
+  100% {
+    filter: none;
+  }
+}
+@keyframes backgroundOpacity {
+  0% {
+    opacity: 0;
+  }
+}
+html {
+  &.flash {
+    --flash-animation: 4.5s;
+    animation: copyPulse var(--flash-animation) ease;
+    body {
+      animation: copyGray var(--flash-animation) ease;
+      &::after {
+        animation: backgroundOpacity var(--flash-animation) ease;
+      }
+    }
+  }
+}
+body {
+  background-color: var(--color-background);
+  font-family: var(--font-size);
+  font-family: var(--font-family);
+  color: var(--color-gray);
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  cursor: default;
+  user-select: none;
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image: url(./assets/backdrop.png);
+    background-size: cover;
+  }
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  text-decoration: 0.125em underline transparent;
+  &:hover {
+    color: var(--color-link-hover);
+    text-decoration-color: currentColor;
+  }
+}
+
+button {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
